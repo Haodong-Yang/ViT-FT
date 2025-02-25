@@ -78,4 +78,3 @@ All results are from fine-tuned ViT-B/16 models which were pretrained on ImageNe
 |:------------------:|:--------------:|:-----------------:|:------------------:|:-------------:|:-------------------------------------:|
 | Oxford Flowers-102 | 2000           | 100               | 1.0                | 99.02         | [Link](configs/linear/flowers102.yaml)|
 | Oxford-IIIT Pets   | 2000           | 100               | 0.5                | 92.64         | [Link](configs/linear/pets37.yaml)    |
-My changes
