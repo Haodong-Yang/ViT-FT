@@ -1,5 +1,7 @@
 from typing import List, Optional, Tuple
 
+import os
+import numpy as np
 import pandas as pd
 import pytorch_lightning as pl
 import torch
@@ -332,3 +334,14 @@ class ClassificationModel(pl.LightningModule):
                 "interval": "step",
             },
         }
+
+    def on_train_epoch_end(self):
+        if self.current_epoch == 0:
+            print(self.net)
+
+        for name, param in self.net.named_parameters():
+            if 'lora' in name:
+                lora_weight = param.detach().cpu().numpy()
+                if not os.path.exists('weight'):
+                    os.makedirs('weight')
+                np.save(f"weight/epoch_{self.current_epoch}_{name}.npy", lora_weight)
